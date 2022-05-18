@@ -1,0 +1,32 @@
+---
+murmur_process_name: murmurd
+murmur_service_name: murmur.service
+
+murmur_config_database: "/var/db/murmur/murmur.sqlite"
+murmur_config_ice: "tcp 127.0.0.1 -p 6502"
+murmur_config_icesecretwrite:
+murmur_config_logfile:
+murmur_config_welcometext: "<br />Welcome to this server running <b>Murmur</b>.<br />Enjoy your stay!<br />"
+murmur_config_port: 64738
+murmur_config_host:
+murmur_config_server_password:
+murmur_config_bandwidth: 558000
+murmur_config_users: 100
+murmur_config_messageburst: 5
+murmur_config_messagelimit: 1
+murmur_config_allow_ping: true
+murmur_config_opusthreshold: 0
+murmur_config_channelnestinglimit: 10
+murmur_config_channelcountlimit: 1000
+murmur_config_defaultchannel: 0
+murmur_config_rememberchannel: true
+murmur_config_rememberchannelduration: 0
+murmur_config_textmessagelenght: 5000
+murmur_config_imagemessagelenght: 1048576
+murmur_config_allowhtml: true
+murmur_config_logdays: 31
+murmur_config_loggroupchanges: true
+murmur_config_logaclchanges: true
+murmur_config_Ice_Warn_UnknownProperties: 1
+murmur_config_Ice_MessageSizeMax: 65536
+#TODO murmur_config_

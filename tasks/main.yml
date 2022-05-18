@@ -1,0 +1,33 @@
+---
+- name: ensure latest version installed
+  community.general.pacman:
+    name:
+    - murmur
+    state: latest
+    update_cache: no
+  when:
+  - ansible_facts['os_family'] == "Archlinux"
+  tags:
+  - packages
+
+- name: ensure config is correct
+  ansible.builtin.template:
+    src: templates/murmur.ini.j2
+    dest: /etc/murmur.ini
+    owner: root
+    group: "{{ murmur_system_group }}"
+    mode: 0640
+  notify:
+  - murmur.reloaded
+  tags:
+  - config
+
+- name: ensure service is enabled and running
+  ansible.builtin.service:
+    name: "{{ murmur_service_name }}"
+    enabled: yes
+    state: started
+  when:
+  - murmur_service_start
+  tags:
+  - service

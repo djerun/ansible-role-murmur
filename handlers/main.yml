@@ -1,0 +1,42 @@
+---
+- name: murmur.enabled
+  service:
+    name: "{{ murmur_service_name }}"
+    enabled: yes
+
+- name: murmur.disabled
+  service:
+    name: "{{ murmur_service_name }}"
+    enabled: no
+
+- name: murmur.certificate.reloaded
+  ansible.builtin.command:
+    cmd: /usr/bin/killall
+    argv:
+    - "-SIGUSR1"
+    - "{{ murmur_process_name }}"
+
+# service doesn't support reloading yet so restart instead
+- name: murmur.reloaded
+  service:
+    name: "{{ murmur_service_name }}"
+    state: restarted
+  when:
+  - murmur_service_start | bool
+
+- name: murmur.restarted
+  service:
+    name: "{{ murmur_service_name }}"
+    state: restarted
+  when:
+  - murmur_service_start | bool
+
+- name: murmur.started
+  service:
+    name: "{{ murmur_service_name }}"
+    state: started
+
+- name: murmur.stopped
+  service:
+    name: "{{ murmur_service_name }}"
+    state: stopped
